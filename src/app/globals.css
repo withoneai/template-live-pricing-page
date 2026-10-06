@@ -1,0 +1,172 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/*
+ * One design tokens. Ivory surface, charcoal ink, one brand accent.
+ * Yellow is a fill only (the mark, the recommended plan); gold is the legible
+ * form of it for text on ivory. Everything else is the neutral ramp.
+ */
+:root {
+  --bg: #FAFAF7;
+  --surface: #FFFFFF;
+  --surface-sunk: #EFEFEB;
+  --ink: #191919;
+  --muted: #656562;
+  --faint: #92928F;
+  --line: #E4E4DF;
+  --grey-light: #BFBFBB;
+  --yellow: #F3C747;
+  --gold: #8A6D0F;
+  --alert: #CD5247;
+}
+
+html, body { min-height: 100%; }
+
+body {
+  font-family: var(--font-sans), sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+code { font-family: var(--font-mono), monospace; font-size: .9em; color: var(--ink); }
+
+/* Demo banner + error note */
+.banner {
+  background: var(--surface-sunk);
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12.5px;
+  padding: 9px 16px;
+  text-align: center;
+}
+.banner a { color: var(--gold); font-weight: 500; }
+.banner code { font-size: 11.5px; }
+.banner.err { background: rgba(205, 82, 71, .07); border-bottom-color: rgba(205, 82, 71, .28); color: #9d3f36; }
+
+.wrap { max-width: 1280px; margin: 0 auto; padding: 22px 44px 40px; }
+
+/* Nav */
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 16px; letter-spacing: -.01em; }
+.logo {
+  width: 28px; height: 28px; border-radius: 8px;
+  background: var(--ink); color: var(--yellow);
+  font-weight: 700; font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+}
+.links { display: flex; gap: 30px; font-size: 13.5px; color: var(--muted); }
+.links .here { color: var(--ink); font-weight: 500; }
+
+/* Hero */
+.hero { text-align: center; padding: 40px 0 28px; }
+.eyebrow {
+  font-family: var(--font-mono), monospace;
+  font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 12px;
+}
+.hero h1 {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 44px; font-weight: 500; letter-spacing: -.02em; line-height: 1.1;
+}
+.hero p { font-size: 15px; color: var(--muted); margin-top: 12px; }
+
+.toggle {
+  display: inline-flex; gap: 2px; margin-top: 24px;
+  background: var(--surface-sunk); border: 1px solid var(--line);
+  border-radius: 999px; padding: 3px;
+}
+.toggle button {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 500; color: var(--muted);
+  padding: 7px 16px; border-radius: 999px;
+  transition: background .15s ease, color .15s ease;
+}
+.toggle button.on { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgba(25, 25, 25, .08); }
+.save { font-family: var(--font-mono), monospace; font-size: 11px; color: var(--gold); }
+
+/* Plans */
+.plans { display: grid; gap: 16px; align-items: stretch; }
+.plan {
+  position: relative;
+  display: flex; flex-direction: column;
+  border: 1px solid var(--line); border-radius: 16px;
+  background: var(--surface); padding: 22px 22px 24px;
+}
+.plan.pick { border-color: var(--ink); box-shadow: 0 10px 30px -18px rgba(25, 25, 25, .35); }
+.plan-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 24px; }
+.plan h2 { font-size: 16px; font-weight: 600; letter-spacing: -.01em; }
+.badge {
+  font-size: 11px; font-weight: 600;
+  background: var(--yellow); color: var(--ink);
+  padding: 3px 10px; border-radius: 999px;
+}
+.desc { font-size: 12.5px; line-height: 1.55; color: var(--muted); margin-top: 6px; min-height: 39px; }
+
+.price { display: flex; align-items: baseline; gap: 6px; margin-top: 20px; height: 46px; }
+.amt { font-family: var(--font-mono), monospace; font-size: 38px; font-weight: 500; letter-spacing: -.04em; }
+.amt.custom { font-family: var(--font-serif), Georgia, serif; font-size: 34px; letter-spacing: -.02em; }
+.per { font-size: 13px; color: var(--faint); }
+.billed { font-family: var(--font-mono), monospace; font-size: 11px; color: var(--faint); margin-top: 4px; min-height: 16px; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 500;
+  padding: 9px 16px; border-radius: 12px;
+  transition: opacity .15s ease, color .15s ease, border-color .15s ease;
+}
+.btn.wide { width: 100%; margin-top: 18px; }
+.btn:disabled { opacity: .55; cursor: default; }
+.btn-primary { background: var(--ink); color: var(--bg); border: 1px solid var(--ink); }
+.btn-primary:not(:disabled):hover { opacity: .88; }
+.btn-ghost { border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+.btn-ghost:not(:disabled):hover { border-color: var(--grey-light); }
+.note { font-size: 11.5px; line-height: 1.5; color: var(--muted); margin-top: 9px; }
+.note.err { color: var(--alert); }
+
+.feats { list-style: none; margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line); display: grid; gap: 10px; }
+.feats li { display: flex; gap: 9px; font-size: 13px; line-height: 1.45; }
+.tick { font-size: 11px; color: var(--gold); margin-top: 2px; }
+
+.empty { font-size: 13px; color: var(--muted); text-align: center; padding: 40px; border: 1px dashed var(--line); border-radius: 16px; }
+
+/* Where the numbers came from */
+.source {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin-top: 18px;
+  font-family: var(--font-mono), monospace; font-size: 11px; color: var(--faint);
+}
+.source .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--grey-light); }
+.source .dot.live { background: var(--yellow); box-shadow: 0 0 0 3px rgba(243, 199, 71, .25); }
+
+/* FAQ */
+.faq { margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--line); }
+.faq h2 { font-family: var(--font-serif), Georgia, serif; font-size: 26px; font-weight: 500; letter-spacing: -.01em; margin-bottom: 22px; }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 48px; }
+.qa h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+.qa p { font-size: 13.5px; line-height: 1.6; color: var(--muted); }
+
+.foot {
+  display: flex; justify-content: space-between; gap: 16px;
+  margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--line);
+  font-size: 12px; color: var(--faint);
+}
+.foot a { color: var(--gold); }
+
+/* After checkout */
+.welcome { text-align: center; padding-top: 120px; }
+.welcome h1 { font-family: var(--font-serif), Georgia, serif; font-size: 40px; font-weight: 500; letter-spacing: -.02em; }
+.welcome p { font-size: 15px; color: var(--muted); margin: 12px 0 26px; }
+
+@media (max-width: 1080px) {
+  .plans { grid-template-columns: repeat(2, 1fr) !important; }
+  .links { display: none; }
+}
+
+@media (max-width: 680px) {
+  .wrap { padding: 20px; }
+  .plans { grid-template-columns: 1fr !important; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 34px; }
+}
